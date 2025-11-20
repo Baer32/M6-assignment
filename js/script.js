@@ -20,15 +20,36 @@
 //     Make your code as concise as possible. There shouldn’t be more than 15 lines of code in the script.
 
 
-window.addEventListener('load', () => {
-    const processForm = (event) => {
-        event.preventDefault();
-        const form = event.target;
-        const formData = new FormData(form);
-        for (let [name, value] of formData.entries()) {
-            console.log(`${name}: ${value}`);
-        }
-    };
-    const formElement = document.querySelector('form');
-    formElement.addEventListener('submit', processForm);
+// Code here used the name instead of the id attribute for form elements
+// below worked, but the second function from lecture is simpler
+
+// window.addEventListener('load', () => {
+//     const processForm = (event) => {
+//         event.preventDefault();
+//         const form = event.target;
+//         const formData = new FormData(form);
+//         for (let [name, value] of formData.entries()) {
+//             console.log(`${name}: ${value}`);
+//         }
+//     };
+//     const formElement = document.querySelector('form');
+//     formElement.addEventListener('submit', processForm);
+// });
+
+
+// Helper function from lecture
+const $ = (id) => document.getElementById(id);
+
+$("empForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    let id = $("id").value;
+    let name = $("name").value;
+    let ext = $("ext").value;
+    let email = $("email").value;
+    let department = $("department").value;
+    console.log(`Employee ID: ${id}`);
+    console.log(`Employee Name: ${name}`);
+    console.log(`Employee Extension: ${ext}`);
+    console.log(`Email: ${email}`);
+    console.log(`Department: ${department}`);
 });
